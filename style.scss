@@ -1,0 +1,44 @@
+body{
+    font-family: 'Spectral', serif;
+}
+
+.navbar{
+    background-color:#ff9a39;
+    font-weight:bold;
+}
+
+a + a::before {
+    content: " | ";
+    margin-right:10px;
+}
+
+@mixin ring ($taille, $couleur){
+    width: $taille;
+    height: $taille;
+    border: ($taille / 10) solid $couleur;
+    border-radius:$taille;
+    box-shadow : ($taille / 20) ($taille / 20) ($taille / 20) darken($couleur,20);
+}
+
+section{
+    font-size:25px;
+}
+
+article{
+    align-items:center;
+}
+
+.ring1{
+    @include ring(50px, #ff9a39 );
+}
+
+.ring2{
+    @include ring(200px, #fffc39 );
+}
+
+@for $i from 1 through 6 {
+    .ring3:nth-child(#{$i}) {
+        @include ring((20px*$i), #4d4c42 );
+        margin-left:-5px * $i;
+    }
+  }
